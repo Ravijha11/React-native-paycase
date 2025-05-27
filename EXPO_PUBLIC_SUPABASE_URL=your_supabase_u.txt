@@ -1,0 +1,3 @@
+EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+EXPO_PUBLIC_REVENUECAT_API_KEY=your_revenuecat_api_key

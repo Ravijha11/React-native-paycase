@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  directUrl  = env("DIRECT_URL") // Optional: improves performance with Supabase
+}
+
+
+model Profile {
+  id                   String   @id
+  username             String?
+  avatar_url           String?
+  notifications_enabled Boolean  @default(true)
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+  vibes                Vibe[]
+}
+
+model Vibe {
+  id         String   @id @default(uuid())
+  content    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  profile_id String
+  profile    Profile  @relation(fields: [profile_id], references: [id])
+}
